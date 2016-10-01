@@ -133,10 +133,8 @@ float snoise(vec4 v) {
 void main() {
 
     float noise = snoise( vec4(vUv.x + uTime, vUv.y + uTime, uTime, uTime) );
-    vec4 color = vec4(noise, noise, noise, 1.0);
-
-    float c = mod(noise, 0.12);
-    color = vec4( c, c, c, 1.0 );
+    float blend = mod(noise, 0.05) * 5.;
+    vec4 color = vec4( blend, blend, blend, 1.0 );
     gl_FragColor = color;
 
 }
